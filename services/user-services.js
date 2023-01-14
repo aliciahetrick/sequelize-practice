@@ -63,18 +63,95 @@
 
 // fetches the first entry based on optional arguments passed:
 
-const User = require('../models/index')['User']
+// const User = require('../models/index')['User']
 
+// class UserService {
+//   async findOne(firstname) {
+//     return await User.findOne({ where: { firstName: firstname } })
+//   }
+// }
+
+// let userService = new UserService()
+// let firstname = 'Alicia'
+// const result = async () => {
+//   const data = await userService.findOne(firstname)
+//   console.log(data)
+// }
+
+// result()
+
+/////////////////////////////////
+
+// fetches or create if does not exist:
+
+// const User = require('../models/index')['User']
+
+// class UserService {
+//   async findOrCreate(firstname) {
+//     return await User.findOrCreate({
+//       where: { firstName: firstname },
+//       defaults: {
+//         lastName: 'Unknown',
+//       },
+//     })
+//   }
+// }
+
+// let userService = new UserService()
+// let firstname = 'Josh'
+// const result = async () => {
+//   const data = await userService.findOrCreate(firstname)
+//   console.log(data)
+// }
+
+// result()
+
+/////////////////////////////////
+
+// update existing data:
+
+// const User = require('../models/index')['User']
+// class UserService {
+//   async updateUser(id, payload) {
+//     return await User.update(payload, {
+//       where: {
+//         id,
+//       },
+//     })
+//   }
+// }
+
+// let userService = new UserService()
+// let payload = {
+//   firstName: 'joshua',
+// }
+// let id = 2
+// const result = async () => {
+//   const data = await userService.updateUser(id, payload)
+//   console.log(data)
+// }
+
+// result()
+
+/////////////////////////////////
+
+// deleting existing data:
+
+const User = require('../models/index')['User']
 class UserService {
-  async findOne(firstname) {
-    return await User.findOne({ where: { firstName: firstname } })
+  async deleteUser(id) {
+    return await User.destroy({
+      where: {
+        id,
+      },
+    })
   }
 }
 
 let userService = new UserService()
-let firstname = 'Alicia'
+let id = 2
 const result = async () => {
-  const data = await userService.findOne(firstname)
+  const data = await userService.deleteUser(id)
   console.log(data)
 }
 
