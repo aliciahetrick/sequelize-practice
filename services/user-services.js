@@ -1,4 +1,7 @@
-// creating a user
+/////////////////////////////////
+
+// creating a user:
+
 // const User = require('../models/index')['User']
 // class UserService {
 //   async createUser(user) {
@@ -17,17 +20,40 @@
 // }
 // result()
 
-//finding all users
-const User = require('../models/index')['User']
+/////////////////////////////////
 
+// finding all users:
+
+// const User = require('../models/index')['User']
+
+// class UserService {
+//   async findAllUser() {
+//     return await User.findAll()
+//   }
+// }
+// let userService = new UserService()
+// const result = async () => {
+//   const data = await userService.findAllUser()
+//   console.log(data)
+// }
+
+// result()
+
+/////////////////////////////////
+
+// find by primary key:
+
+const User = require('../models/index')['User']
 class UserService {
-  async findAllUser() {
-    return await User.findAll()
+  async findWithPk(userId) {
+    return await User.findByPk(userId)
   }
 }
+let userId = 1
 let userService = new UserService()
+
 const result = async () => {
-  const data = await userService.findAllUser()
+  const data = await userService.findWithPk(userId)
   console.log(data)
 }
 
