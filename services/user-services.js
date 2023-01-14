@@ -43,17 +43,38 @@
 
 // find by primary key:
 
+// const User = require('../models/index')['User']
+// class UserService {
+//   async findWithPk(userId) {
+//     return await User.findByPk(userId)
+//   }
+// }
+// let userId = 1
+// let userService = new UserService()
+
+// const result = async () => {
+//   const data = await userService.findWithPk(userId)
+//   console.log(data)
+// }
+
+// result()
+
+/////////////////////////////////
+
+// fetches the first entry based on optional arguments passed:
+
 const User = require('../models/index')['User']
+
 class UserService {
-  async findWithPk(userId) {
-    return await User.findByPk(userId)
+  async findOne(firstname) {
+    return await User.findOne({ where: { firstName: firstname } })
   }
 }
-let userId = 1
-let userService = new UserService()
 
+let userService = new UserService()
+let firstname = 'Alicia'
 const result = async () => {
-  const data = await userService.findWithPk(userId)
+  const data = await userService.findOne(firstname)
   console.log(data)
 }
 
