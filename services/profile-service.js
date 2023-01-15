@@ -31,3 +31,8 @@ const result = async () => {
 }
 
 result()
+
+module.exports = {
+  profileService,
+  profile,
+}

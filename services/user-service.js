@@ -137,21 +137,54 @@
 
 // deleting existing data:
 
+// const User = require('../models/index')['User']
+
+// class UserService {
+//   async deleteUser(id) {
+//     return await User.destroy({
+//       where: {
+//         id,
+//       },
+//     })
+//   }
+// }
+
+// let userService = new UserService()
+// let id = 2
+// const result = async () => {
+//   const data = await userService.deleteUser(id)
+//   console.log(data)
+// }
+
+// result()
+
+/////////////////////////////////
+// all cars belonging to each user
+
 const User = require('../models/index')['User']
+const Profile = require('../models/index')['Profile']
+const Cars = require('../models/index')['Cars']
+
 class UserService {
-  async deleteUser(id) {
-    return await User.destroy({
-      where: {
-        id,
-      },
+  async findByPk(userId) {
+    return await User.findByPk(userId)
+  }
+
+  async findAll() {
+    return await User.findAll({
+      include: [
+        {
+          model: Cars,
+          as: 'cars',
+        },
+      ],
     })
   }
 }
 
 let userService = new UserService()
-let id = 2
 const result = async () => {
-  const data = await userService.deleteUser(id)
+  let data = await userService.findAll()
   console.log(data)
 }
 
